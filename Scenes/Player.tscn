@@ -1,7 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://f7p401twlfqk"]
+[gd_scene load_steps=32 format=3 uid="uid://f7p401twlfqk"]
 
 [ext_resource type="Texture2D" uid="uid://bdg85lwd01yai" path="res://Kings and Pigs/Sprites/01-King Human/Idle (78x58).png" id="1_ibeuk"]
-[ext_resource type="Script" path="res://Scenes/scripts/Player.gd" id="1_o5pnq"]
 [ext_resource type="Script" path="res://Scenes/scripts/CharacterBody2D.gd" id="2_8dus7"]
 [ext_resource type="Script" path="res://Scenes/StateMachine.gd" id="3_bd1vf"]
 [ext_resource type="Script" path="res://Scenes/scripts/PlayerIdle.gd" id="4_dcrc1"]
@@ -183,33 +182,36 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_asdbn"]
 size = Vector2(21.5, 26)
 
-[node name="Player" type="Node2D"]
-script = ExtResource("1_o5pnq")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(1, -2)
 script = ExtResource("2_8dus7")
 
-[node name="StateMachine" type="Node" parent="CharacterBody2D" node_paths=PackedStringArray("inital_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
 script = ExtResource("3_bd1vf")
 inital_state = NodePath("PlayerIdle")
 
-[node name="PlayerIdle" type="Node" parent="CharacterBody2D/StateMachine" node_paths=PackedStringArray("player", "playerAnim")]
+[node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "playerAnim")]
 script = ExtResource("4_dcrc1")
 player = NodePath("../..")
-playerAnim = NodePath("../../AnimatedSprite2D")
+playerAnim = NodePath("../../Marker2D/AnimatedSprite2D")
 
-[node name="PlayerMove" type="Node" parent="CharacterBody2D/StateMachine" node_paths=PackedStringArray("player", "playerAnim")]
+[node name="PlayerMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "playerAnim", "marker")]
 script = ExtResource("5_xww8c")
 player = NodePath("../..")
-playerAnim = NodePath("../../AnimatedSprite2D")
+playerAnim = NodePath("../../Marker2D/AnimatedSprite2D")
+marker = NodePath("../../Marker2D")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(7, -2)
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-1, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+position = Vector2(8, -3)
 sprite_frames = SubResource("SpriteFrames_jpbb4")
-animation = &"fall"
+animation = &"run"
+frame_progress = 0.958025
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-0.75, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_asdbn")

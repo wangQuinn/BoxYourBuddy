@@ -3,6 +3,7 @@ class_name PlayerMove
 
 @export var player : CharacterBody2D
 @export var playerAnim: AnimatedSprite2D
+@export var marker : Marker2D
 
 func Enter():
 	pass
@@ -26,10 +27,10 @@ func Physics_Update(_delta: float):
 	player.velocity.x = horizontal_direction * player.speed
 	
 	if(horizontal_direction > 0):
-		playerAnim.flip_h = false
+		marker.scale.x = 1
 		playerAnim.play("run")
 	elif(horizontal_direction < 0):
-		playerAnim.flip_h = true
+		marker.scale.x = -1
 		playerAnim.play("run")
 		
 	player.move_and_slide()
