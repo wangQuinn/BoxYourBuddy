@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2oup6qvg6oqg"]
+[gd_scene load_steps=4 format=3 uid="uid://d2oup6qvg6oqg"]
+
+[ext_resource type="PackedScene" uid="uid://f7p401twlfqk" path="res://Scenes/Player.tscn" id="1_xbprf"]
+[ext_resource type="TileSet" uid="uid://cw6n8r8x2h6q7" path="res://TileSets/Floor1.tres" id="2_rkhlq"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_fnaba"]
 
@@ -7,5 +10,14 @@ position = Vector2(576, 327)
 scale = Vector2(1.04568, 1)
 
 [node name="background" type="Sprite2D" parent="."]
-scale = Vector2(1155, 661)
+position = Vector2(-394.959, -235.5)
+scale = Vector2(313.673, 185)
 texture = SubResource("CanvasTexture_fnaba")
+
+[node name="Player" parent="." instance=ExtResource("1_xbprf")]
+position = Vector2(-422.691, -230)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_rkhlq")
+format = 2
+layer_0/tile_data = PackedInt32Array(-327698, 65536, 7, -262162, 65536, 8, -327697, 131072, 7, -262161, 131072, 8, -327696, 131072, 8, -262160, 131072, 8, -327695, 131072, 8, -262159, 131072, 8, -327694, 131072, 8, -262158, 131072, 8, -327693, 131072, 8, -262157, 131072, 8, -327692, 131072, 8, -262156, 131072, 8, -327691, 131072, 8, -262155, 131072, 8, -327690, 131072, 8, -262154, 131072, 8, -327689, 131072, 8, -262153, 131072, 8, -327688, 131072, 8, -262152, 131072, 8, -327687, 196608, 7, -262151, 131072, 8)
