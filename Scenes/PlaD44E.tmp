@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://f7p401twlfqk"]
+[gd_scene load_steps=29 format=3 uid="uid://f7p401twlfqk"]
 
 [ext_resource type="Texture2D" uid="uid://bdg85lwd01yai" path="res://Kings and Pigs/Sprites/01-King Human/Idle (78x58).png" id="1_ibeuk"]
 [ext_resource type="Script" path="res://Scenes/scripts/Player.gd" id="1_o5pnq"]
@@ -6,13 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/StateMachine.gd" id="3_bd1vf"]
 [ext_resource type="Script" path="res://Scenes/scripts/PlayerIdle.gd" id="4_dcrc1"]
 [ext_resource type="Script" path="res://Scenes/scripts/PlayerMove.gd" id="5_xww8c"]
-[ext_resource type="Texture2D" uid="uid://dyeke2d306i0x" path="res://Kings and Pigs/Sprites/01-King Human/Fall (78x58).png" id="6_apbku"]
-[ext_resource type="Texture2D" uid="uid://c8bi8aj7fdxv1" path="res://Kings and Pigs/Sprites/01-King Human/Jump (78x58).png" id="7_3sx0n"]
 [ext_resource type="Texture2D" uid="uid://f4r7gt075i5v" path="res://Kings and Pigs/Sprites/01-King Human/Run (78x58).png" id="7_7qn03"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1knv"]
-atlas = ExtResource("6_apbku")
-region = Rect2(0, 0, 78, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8s0yt"]
 atlas = ExtResource("1_ibeuk")
@@ -58,10 +52,6 @@ region = Rect2(702, 0, 78, 58)
 atlas = ExtResource("1_ibeuk")
 region = Rect2(780, 0, 78, 58)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qalg5"]
-atlas = ExtResource("7_3sx0n")
-region = Rect2(0, 0, 78, 58)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_xofmu"]
 atlas = ExtResource("7_7qn03")
 region = Rect2(0, 0, 78, 58)
@@ -96,14 +86,6 @@ region = Rect2(546, 0, 78, 58)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jpbb4"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v1knv")
-}],
-"loop": true,
-"name": &"fall",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8s0yt")
@@ -141,14 +123,6 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qalg5")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -198,17 +172,18 @@ script = ExtResource("4_dcrc1")
 player = NodePath("../..")
 playerAnim = NodePath("../../AnimatedSprite2D")
 
-[node name="PlayerMove" type="Node" parent="CharacterBody2D/StateMachine" node_paths=PackedStringArray("player", "playerAnim")]
+[node name="PlayerMove" type="Node" parent="CharacterBody2D/StateMachine" node_paths=PackedStringArray("player", "playAnim")]
 script = ExtResource("5_xww8c")
 player = NodePath("../..")
-playerAnim = NodePath("../../AnimatedSprite2D")
+playAnim = NodePath("../../AnimatedSprite2D")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(7, -2)
 sprite_frames = SubResource("SpriteFrames_jpbb4")
-animation = &"fall"
+animation = &"run"
+frame_progress = 0.612852
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-0.75, 0)
