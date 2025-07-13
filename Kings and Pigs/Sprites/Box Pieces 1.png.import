@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmqyd2n08nlsa"
-path="res://.godot/imported/Box Pieces 1.png-0d4010705fa7be2e27bc86e907907faf.ctex"
+path="res://.godot/imported/Box Pieces 1.png-ab740f514dcd6646726e9c0392362377.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Kings and Pigs/Sprites/08-Box/Box Pieces 1.png"
-dest_files=["res://.godot/imported/Box Pieces 1.png-0d4010705fa7be2e27bc86e907907faf.ctex"]
+source_file="res://Kings and Pigs/Sprites/Box Pieces 1.png"
+dest_files=["res://.godot/imported/Box Pieces 1.png-ab740f514dcd6646726e9c0392362377.ctex"]
 
 [params]
 

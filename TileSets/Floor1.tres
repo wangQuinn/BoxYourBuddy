@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://cw6n8r8x2h6q7"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://cw6n8r8x2h6q7"]
 
 [ext_resource type="Texture2D" uid="uid://qtuomnrplkd7" path="res://TileSets/modifiedFloor1.png" id="1_llg1f"]
 [ext_resource type="Texture2D" uid="uid://dn1c0m4dhvvpo" path="res://Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="2_vth3c"]
 [ext_resource type="Texture2D" uid="uid://beo457pb6lfsl" path="res://Kings and Pigs/Sprites/14-TileSets/Decorations (32x32).png" id="3_l0qet"]
+[ext_resource type="Texture2D" uid="uid://bdwdvb6i5yjt4" path="res://Kings and Pigs/Sprites/08-Box/Idle.png" id="3_vlvgr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xri25"]
 texture = ExtResource("1_llg1f")
@@ -1047,6 +1048,10 @@ texture_region_size = Vector2i(32, 32)
 17:11/0/terrains_peering_bit/left_side = 1
 17:11/0/terrains_peering_bit/top_side = 1
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2enwu"]
+texture = ExtResource("3_vlvgr")
+texture_region_size = Vector2i(32, 32)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1vkyt"]
 texture = ExtResource("3_l0qet")
 texture_region_size = Vector2i(32, 32)
@@ -1122,3 +1127,4 @@ terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_xri25")
 sources/1 = SubResource("TileSetAtlasSource_grnbu")
 sources/4 = SubResource("TileSetAtlasSource_1vkyt")
+sources/2 = SubResource("TileSetAtlasSource_2enwu")

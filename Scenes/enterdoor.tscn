@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkbi3kd3xrqep"]
+
+[ext_resource type="Texture2D" uid="uid://ccjpael2ew6yl" path="res://Kings and Pigs/Sprites/11-Door/Idle.png" id="1_ipurg"]
+[ext_resource type="Texture2D" uid="uid://dis16x7ifkfjc" path="res://Kings and Pigs/Sprites/11-Door/Closiong (46x56).png" id="2_dwkfm"]
+[ext_resource type="Texture2D" uid="uid://dh66yb3eqa8y" path="res://Kings and Pigs/Sprites/11-Door/Opening (46x56).png" id="3_gjign"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf5ub"]
+atlas = ExtResource("2_dwkfm")
+region = Rect2(0, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvm5v"]
+atlas = ExtResource("2_dwkfm")
+region = Rect2(46, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v0f8"]
+atlas = ExtResource("2_dwkfm")
+region = Rect2(92, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opj0q"]
+atlas = ExtResource("3_gjign")
+region = Rect2(0, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bv3i"]
+atlas = ExtResource("3_gjign")
+region = Rect2(46, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwdi3"]
+atlas = ExtResource("3_gjign")
+region = Rect2(92, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv105"]
+atlas = ExtResource("3_gjign")
+region = Rect2(138, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ccxw"]
+atlas = ExtResource("3_gjign")
+region = Rect2(184, 0, 46, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a2n76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf5ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvm5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v0f8")
+}],
+"loop": false,
+"name": &"close",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opj0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bv3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwdi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv105")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ccxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ccxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ccxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ccxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ccxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ccxw")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ipurg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a2n76")
+animation = &"close"
+autoplay = "close"
+frame = 2
+frame_progress = 1.0

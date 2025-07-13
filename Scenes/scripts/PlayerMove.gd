@@ -5,6 +5,9 @@ class_name PlayerMove
 @export var playerAnim: AnimatedSprite2D
 @export var marker : Marker2D
 
+var hasJumped = false
+var was_on_floor = false
+
 func Enter():
 	pass
 func Exit():
@@ -13,14 +16,18 @@ func Update(_delta: float):
 	pass
 	
 func Physics_Update(_delta: float):
+	
+	
 	if !player.is_on_floor():
 		playerAnim.play("fall")
 		if player.velocity.y > 500: 
 			player.velocity.y = 500
-	player.velocity.y += player.gravity 
+		player.velocity.y += player.gravity
 	
-	if Input.is_action_just_pressed("jump"):
+		
+	if Input.is_action_just_pressed("jump") and player.is_on_floor():
 		playerAnim.play("jump")
+		hasJumped = true
 		player.velocity.y = -player.jump_force
 		
 	var horizontal_direction = Input.get_axis("move_left", "move_right")

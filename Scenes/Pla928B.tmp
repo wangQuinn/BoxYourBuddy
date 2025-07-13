@@ -182,7 +182,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_asdbn"]
 size = Vector2(21.5, 26)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(1, -2)
 script = ExtResource("2_8dus7")
 speed = 200
