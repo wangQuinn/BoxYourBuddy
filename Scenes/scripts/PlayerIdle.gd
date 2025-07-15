@@ -6,26 +6,21 @@ class_name PlayerIdle
 func play_idle():
 	playerAnim.play("idle")
 
-func Enter():
+func Enter(data = null):
 	play_idle() 
 
 func Exit():
 	pass
 
 func Update(_delta: float):
-	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-		
-		Transitioned.emit(self, "PlayerMove")
-		return
-	if Input.is_action_just_pressed("jump"):
-		playerAnim.play("jump")
-		player.velocity.y = -player.jump_force
-		Transitioned.emit(self, "PlayerMove")
-		return
-	if Input.is_action_just_pressed("attack"):
-		playerAnim.play("attack")
-		Transitioned.emit(self, "PlayerMove")
-	
+	pass
 
 func Physics_Update(_delta: float):
-	pass
+	#if not player.is_on_floor():
+		#Transitioned.emit(self, "PlayerJump")
+		#return
+	if Input.is_action_pressed("jump"):
+		Transitioned.emit(self, "PlayerMove", {"jump": true})
+		
+	elif Input.get_axis("move_left", "move_right") != 0:
+		Transitioned.emit(self, "PlayerMove")

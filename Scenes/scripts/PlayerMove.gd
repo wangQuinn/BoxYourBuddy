@@ -11,8 +11,10 @@ var was_on_floor = false
 var is_attacking = false
 var current_animation = "nothing"
 
-func Enter():
-	pass
+func Enter(data = null):
+	if data and data.has("jump"):
+		player.velocity.y = -player.jump_force
+		
 func Exit():
 	pass
 func Update(_delta: float):
@@ -44,20 +46,19 @@ func Physics_Update(_delta: float):
 		
 	var horizontal_direction = Input.get_axis("move_left", "move_right")
 	player.velocity.x = horizontal_direction * player.speed
-	
-	if !is_attacking:
-		if(horizontal_direction > 0):
-			marker.scale.x = 1
-			playerAnim.play("run")
-		elif(horizontal_direction < 0):
-			marker.scale.x = -1
-			playerAnim.play("run")
+
+	if(horizontal_direction > 0):
+		marker.scale.x = 1
+		playerAnim.play("run")
+	elif(horizontal_direction < 0):
+		marker.scale.x = -1
+		playerAnim.play("run")
 		
 	#horiziontal_direction = 0 when players is not moving. 
-	if horizontal_direction == 0 and player.is_on_floor() and !is_attacking:
+	if horizontal_direction == 0 and player.is_on_floor():
 		Transitioned.emit(self, "PlayerIdle")
 		
-	handle_attack_input()
+	#handle_attack_input()
 	player.move_and_slide()
 
 
