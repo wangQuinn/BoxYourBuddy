@@ -14,6 +14,7 @@ func Exit():
 
 func Update(_delta: float):
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+		
 		Transitioned.emit(self, "PlayerMove")
 		return
 	if Input.is_action_just_pressed("jump"):
@@ -21,6 +22,9 @@ func Update(_delta: float):
 		player.velocity.y = -player.jump_force
 		Transitioned.emit(self, "PlayerMove")
 		return
+	if Input.is_action_just_pressed("attack"):
+		playerAnim.play("attack")
+		Transitioned.emit(self, "PlayerMove")
 	
 
 func Physics_Update(_delta: float):
