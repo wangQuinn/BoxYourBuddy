@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dh66yb3eqa8y" path="res://Kings and Pigs/Sprites/11-Door/Opening (46x56).png" id="4_3ewg0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nfhr"]
-size = Vector2(46, 56)
+size = Vector2(46, 43)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kf5ub"]
 atlas = ExtResource("2_0lxhe")
@@ -95,6 +95,7 @@ animations = [{
 script = ExtResource("2_16nu8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_4nfhr")
 debug_color = Color(0.458824, 0.584314, 0.301961, 0.419608)
 

@@ -213,7 +213,8 @@ size = Vector2(21.5, 26)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(1, -2)
 script = ExtResource("2_8dus7")
-friction = 300
+speed = 200
+jump_force = 400
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
 script = ExtResource("3_bd1vf")
@@ -249,5 +250,3 @@ animation = &"attack"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_asdbn")
-
-[connection signal="animation_finished" from="Marker2D/AnimatedSprite2D" to="StateMachine/PlayerAttack" method="_on_animated_sprite_2d_animation_finished"]

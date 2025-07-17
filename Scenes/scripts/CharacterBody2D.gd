@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var speed = 300
 @export var gravity = 30
 @export var jump_force = 500 
+@export var friction = 500 
+@export var maxSpeed = 400
 
 func _process(delta):
 	pass
