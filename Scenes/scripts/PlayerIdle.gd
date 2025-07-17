@@ -24,6 +24,9 @@ func Physics_Update(_delta: float):
 			player.velocity.y = 500
 		player.velocity.y += player.gravity
 		player.move_and_slide()
+	#elif player.velocity.x != 0: 
+		#player.velocity.x -=  sign(player.velocity.x) * player.friction * _delta
+		
 	if Input.is_action_pressed("jump"):
 		Transitioned.emit(self, "PlayerMove", {"jump": true})
 		

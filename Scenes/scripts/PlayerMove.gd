@@ -6,7 +6,7 @@ class_name PlayerMove
 @export var marker : Marker2D
 
 
-var hasJumped = false
+
 var was_on_floor = false
 var current_animation = "nothing"
 
@@ -19,28 +19,35 @@ func Exit():
 func Update(_delta: float):
 	pass
 func Physics_Update(_delta: float):
+	#parabolic jump up and faster falling down = snappy!
 	if !player.is_on_floor():
 		playerAnim.play("fall")
-		if player.velocity.y > 500: 
-			player.velocity.y = 500
-		player.velocity.y += player.gravity
+		
+		if player.velocity.y > 0:
+			player.velocity.y += player.downGravity * _delta
+		else:
+			player.velocity.y += player.upGravity * _delta
 	
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():
 		playerAnim.play("jump")
-		hasJumped = true
 		player.velocity.y = -player.jump_force
+	if Input.is_action_just_released("jump"):
+			player.velocity.y = player.unjump_force
+	
 		
 	var horizontal_direction = Input.get_axis("move_left", "move_right")
 	
-	player.velocity.x += horizontal_direction * player.speed * _delta
+	player.velocity.x = move_toward(player.velocity.x, player.maxSpeed, horizontal_direction * player.speed * _delta)
+	print(" velocity of " + str(player.velocity.x))
 	#cap velocity.x
-	if player.velocity.x > player.maxSpeed: 
-		print("reach velocity of 500")
-		player.velocity.x = player.maxSpeed
+	if abs(player.velocity.x) > player.maxSpeed: #if it reaches max speed apply friction 
+		print("reach velocity of " + str(player.maxSpeed))
+		player.velocity.x = move_toward(player.velocity.x, player.maxSpeed, -1 * horizontal_direction * player.friction * _delta)
 	
 	# apply friction so turning feels less floaty? 
 	if sign(player.velocity.x) != sign(horizontal_direction): 
 		player.velocity.x -= -1 * horizontal_direction * player.friction * _delta
+		
 
 	if(horizontal_direction > 0):
 		marker.scale.x = 1
@@ -48,6 +55,9 @@ func Physics_Update(_delta: float):
 	elif(horizontal_direction < 0):
 		marker.scale.x = -1
 		playerAnim.play("run")
+	else:
+		player.velocity.x -= sign(player.velocity.x) * player.friction * _delta
+		
 		
 	player.move_and_slide()
 	#horiziontal_direction = 0 when players is not moving. 

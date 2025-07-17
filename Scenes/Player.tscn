@@ -236,6 +236,7 @@ player = NodePath("../..")
 playerAnim = NodePath("../../Marker2D/AnimatedSprite2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -8)
 position_smoothing_enabled = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
