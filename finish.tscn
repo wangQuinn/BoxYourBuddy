@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4mcb5cisyml3"]
+
+[ext_resource type="Texture2D" uid="uid://bvadegl4k7n3n" path="res://TileSets/finish.png" id="1_slgyt"]
+[ext_resource type="Script" path="res://finish.gd" id="2_qi2jx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_224es"]
+size = Vector2(205, 3585)
+
+[node name="Finish" type="TextureRect"]
+offset_right = 208.0
+offset_bottom = 3585.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_slgyt")
+stretch_mode = 1
+script = ExtResource("2_qi2jx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(102.5, 1792.5)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_224es")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
