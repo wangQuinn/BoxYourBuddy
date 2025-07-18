@@ -4,10 +4,12 @@ class_name PlayerMove
 @export var player : CharacterBody2D
 @export var playerAnim: AnimatedSprite2D
 @export var marker : Marker2D
+@export var camera : Camera2D
 
 
 
-var was_on_floor = false
+
+var camera_target = 64.0
 var current_animation = "nothing"
 
 func Enter(data = null):
@@ -51,15 +53,20 @@ func Physics_Update(_delta: float):
 
 	if(horizontal_direction > 0):
 		marker.scale.x = 1
+		camera_target = 64
 		playerAnim.play("run")
 	elif(horizontal_direction < 0):
 		marker.scale.x = -1
+		camera_target = -64
 		playerAnim.play("run")
 	else:
 		player.velocity.x -= sign(player.velocity.x) * player.friction * _delta
 		
 		
 	player.move_and_slide()
+	#smooths the camera, change the number for smoother
+	camera.offset.x = lerp(camera.offset.x, float(camera_target), 1.5* _delta)
+
 	#horiziontal_direction = 0 when players is not moving. 
 	#for this game they should never be able to idle after beginning? 
 	#if horizontal_direction == 0 and player.is_on_floor():

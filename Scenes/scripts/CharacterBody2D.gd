@@ -1,7 +1,7 @@
 extends CharacterBody2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-@export var speed = 300
+@export var speed = 150
 @export var gravity = 30
 @export var jump_force = 300 
 @export var friction = 600 

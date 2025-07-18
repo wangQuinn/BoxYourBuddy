@@ -23,4 +23,3 @@ position = Vector2(-398, 162)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_083ap")]
 position = Vector2(-398, 177)
-jump_force = 300

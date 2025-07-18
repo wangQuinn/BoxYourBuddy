@@ -224,11 +224,12 @@ script = ExtResource("4_dcrc1")
 player = NodePath("../..")
 playerAnim = NodePath("../../Marker2D/AnimatedSprite2D")
 
-[node name="PlayerMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "playerAnim", "marker")]
+[node name="PlayerMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "playerAnim", "marker", "camera")]
 script = ExtResource("5_xww8c")
 player = NodePath("../..")
 playerAnim = NodePath("../../Marker2D/AnimatedSprite2D")
 marker = NodePath("../../Marker2D")
+camera = NodePath("../../Camera2D")
 
 [node name="PlayerAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "playerAnim")]
 script = ExtResource("5_cx5cp")
@@ -236,7 +237,7 @@ player = NodePath("../..")
 playerAnim = NodePath("../../Marker2D/AnimatedSprite2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -8)
+offset = Vector2(64, -8)
 position_smoothing_enabled = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
