@@ -13,7 +13,7 @@ class_name Player
 @export var downGravity = 1000
 @export var coyote_time = 0.15
 func _ready():
-	camera_2d.zoom = Vector2(1.5,1.5)
+	camera_2d.zoom = Vector2(0.9,0.9)
 func _process(delta):
 	pass
 	#if Input.is_action_just_pressed("restart"):

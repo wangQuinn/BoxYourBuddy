@@ -8,7 +8,7 @@ class_name PlayerMove
 
 
 @export var minZoom = 0.9
-@export var maxZoom =1.5
+@export var maxZoom =2.0
 
 @onready var ray_cast_2d = $"../../RayCast2D"
 
@@ -102,7 +102,7 @@ func Physics_Update(_delta: float):
 	var zoom_target: = Vector2(zoom_target_amount, zoom_target_amount)
 	
 	camera.zoom = camera.zoom.lerp(zoom_target, 0.02)
-	camera.offset.x = lerp(camera.offset.x, float(camera_target), 1.5* _delta)
+	camera.offset.x = lerp(camera.offset.x, float(camera_target), maxZoom* _delta)
 
 	#horiziontal_direction = 0 when players is not moving. 
 	#for this game they should never be able to idle after beginning? 

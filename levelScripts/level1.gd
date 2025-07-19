@@ -25,4 +25,7 @@ func _process(delta):
 		time = 0.0
 func finish_level():
 	isTimeRunning = false
+	
 	print("YOU Won")
+	Highscores.highscores[0] = time
+	get_tree().change_scene_to_file("res://LevelSelect.tscn")
